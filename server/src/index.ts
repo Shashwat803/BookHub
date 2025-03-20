@@ -7,6 +7,7 @@ import express, { Application } from "express";
 import { graphqlUploadExpress } from "graphql-upload-ts";
 import cors from "cors";
 import bodyParser from "body-parser";
+require('dotenv').config()
 
 async function startServer(): Promise<void> {
   const app: Application = express();
