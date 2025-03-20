@@ -4,12 +4,7 @@ import { Author } from "@/types";
 import AuthorCard from "./AuthorCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Search,
-  Loader,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Search, Loader } from "lucide-react";
 import AddAuthorButton from "./AddAuthorButton";
 import { useMutation, useQuery } from "@apollo/client";
 import { Get_Authors } from "@/graphql/queries";
@@ -39,6 +34,10 @@ const AuthorList: React.FC<AuthorListProps> = ({ setVisible, visible }) => {
 
   const authors = data?.getAuthors?.authors || [];
   const totalPages = data?.getAuthors?.totalPages || 1;
+
+React.useEffect(() => {
+  setCurrentPage(1);
+}, [debouncedValue]);
 
   const [deleteAuthor] = useMutation(DELETE_AUTHOR, {
     refetchQueries: [

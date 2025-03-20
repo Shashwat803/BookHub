@@ -35,6 +35,10 @@ const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
   const books = data?.getBooks?.books || [];
   const totalPages = data?.getBooks?.totalPages || 1;
 
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [debouncedValue]);
+
   const [deleteBook] = useMutation(DELETE_BOOK, {
     refetchQueries: [
       {
