@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", "bookhub-q388.onrender.com"],
   },
 };
 
