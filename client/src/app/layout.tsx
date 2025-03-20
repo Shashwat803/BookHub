@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { ClerkProvider } from "@clerk/nextjs";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { apiUrl } from "@/utils/URL";
 import { Providers } from "./providers";
 
 const geistSans = Geist({

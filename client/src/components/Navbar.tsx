@@ -4,7 +4,6 @@ import { Book, User } from "lucide-react";
 import Link from "next/link";
 import {
   SignInButton,
-  SignUpButton,
   SignedIn,
   SignedOut,
   UserButton,
