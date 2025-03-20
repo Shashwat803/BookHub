@@ -55,7 +55,7 @@ export default {
       }
   
       let imagePath = null;
-      if (coverImage && coverImage.trim() !== "") {
+      if (coverImage) {
         imagePath = await saveImage(coverImage);
       }
   

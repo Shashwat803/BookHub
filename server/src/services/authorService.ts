@@ -63,7 +63,7 @@ export default {
       }
   
       let imagePath = null;
-      if (image && image.trim() !== "") {
+      if (image) {
         imagePath = await saveImage(image);
       }
   
@@ -79,7 +79,6 @@ export default {
           bornDate,
         };
   
-        // Only update image if imagePath is valid
         if (imagePath) {
           updateData.image = imagePath;
         }
