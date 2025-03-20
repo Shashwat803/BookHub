@@ -25,6 +25,7 @@ const nextConfig: NextConfig = {
         pathname: "/**", // Allow all images from localhost
       },
     ],
+    unoptimized: true,
   },
 };
 
