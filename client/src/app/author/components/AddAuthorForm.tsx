@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { User, FileText, ImageIcon } from "lucide-react";
 import { useMutation } from "@apollo/client";
 import { CREATE_AUTHOR } from "@/graphql/mutation";
-import { Get_Authors } from "@/graphql/queries";
+import { Get_AuthorNameList, Get_Authors } from "@/graphql/queries";
 import { Author } from "@/types";
 
 function AuthorForm({
@@ -40,6 +40,9 @@ function AuthorForm({
       {
         query: Get_Authors,
         variables: { limit: 10, pageNumber: 1, searchQuery: "" },
+      },
+      {
+        query: Get_AuthorNameList,
       },
     ],
     awaitRefetchQueries: true,
