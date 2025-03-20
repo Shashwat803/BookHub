@@ -9,6 +9,9 @@ BookHub is a full-stack web application built with modern technologies to manage
 - **GraphQL API**: Efficient data fetching and manipulation using Apollo Client.
 - **Optimized UI**: Styled with Tailwind CSS and shadcn/ui for a seamless experience.
 
+## Deployed Link
+- https://book-hub-ochre.vercel.app/
+
 ## Technologies Used
 
 ### Frontend
