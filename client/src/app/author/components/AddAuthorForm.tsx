@@ -84,7 +84,7 @@ function AuthorForm({
       console.error("Error creating author:", error);
     }
   };
-  const handleChange = (field: string, value: any) => {
+  const handleChange = (field: string, value: string | number | Date) => {
     setFormData({ ...formData, [field]: value });
     setErrors({ ...errors, [field]: false });
   };
