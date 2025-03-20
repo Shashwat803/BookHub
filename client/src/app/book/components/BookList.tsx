@@ -32,10 +32,10 @@ const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
     },
   });
 
-  const books = data?.getBooks || [];
-  const totalPages = Math.ceil(books.length / booksPerPage);
+  const books = data?.getBooks?.books || [];
+  const totalPages = data?.getBooks?.totalPages || 1;
 
-  const [deletBook] = useMutation(DELETE_BOOK, {
+  const [deleteBook] = useMutation(DELETE_BOOK, {
     refetchQueries: [
       {
         query: GET_BOOKS,
@@ -67,7 +67,7 @@ const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
 
   const handleDelete = async (bookId: number) => {
     try {
-      await deletBook({ variables: { bookId } });
+      await deleteBook({ variables: { bookId } });
       refetch();
     } catch (error) {
       console.error("Error deleting book:", error);
@@ -138,6 +138,7 @@ const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
           </div>
         </div>
       )}
+
       {editBook && (
         <BookForm
           visible={visible}

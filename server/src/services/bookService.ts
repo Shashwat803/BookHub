@@ -25,7 +25,14 @@ export default {
         offset,
         limit,
       });
-      return books;
+      const totalBooks = await Book.count({ where: whereQuery });
+
+      return {
+        books,
+        totalBooks,
+        totalPages: Math.ceil(totalBooks / limit),
+        currentPage: pageNumber,
+      };
     } catch (error) {
       throw new Error("Error while fetching books");
     }

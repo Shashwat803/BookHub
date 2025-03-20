@@ -37,8 +37,8 @@ const AuthorList: React.FC<AuthorListProps> = ({ setVisible, visible }) => {
     },
   });
 
-  const authors = data?.getAuthors || [];
-  const totalPages = Math.ceil(authors.length / authorsPerPage);
+  const authors = data?.getAuthors?.authors || [];
+  const totalPages = data?.getAuthors?.totalPages || 1;
 
   const [deleteAuthor] = useMutation(DELETE_AUTHOR, {
     refetchQueries: [

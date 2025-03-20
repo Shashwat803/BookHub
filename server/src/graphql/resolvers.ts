@@ -45,7 +45,7 @@ const resolvers = {
     },
   },
   Mutation: {
-   createAuthor: async (_: any, args: Author) => {
+    createAuthor: async (_: any, args: Author) => {
       return await authorService.createAuthor(args);
     },
     createBook: async (_: any, args: Book) => {

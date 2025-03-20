@@ -7,10 +7,26 @@ type Response {
   message: String!
 }
 
+
+type AuthorResult {
+  authors: [Author]
+  totalAuthors: Int
+  totalPages: Int
+  currentPage: Int
+}
+
+type BookResult {
+  books: [Book]
+  totalBooks: Int
+  totalPages: Int
+  currentPage: Int
+}
+
 type AuthorNameList{
     authorId: Int!
     name: String!
 }
+
 
   type Author {
     authorId: Int!
@@ -31,8 +47,18 @@ type AuthorNameList{
   }
 
   type Query {
-    getAuthors(limit: Int, pageNumber: Int, searchQuery: String): [Author]
-    getBooks(limit: Int, pageNumber: Int, searchQuery: String): [Book]
+   getAuthors(
+    limit: Int
+    pageNumber: Int
+    searchQuery: String
+  ): AuthorResult
+
+    getBooks(
+    limit: Int
+    pageNumber: Int
+    searchQuery: String
+  ): BookResult
+  
     getAuthorNameList: [AuthorNameList]
   }
 

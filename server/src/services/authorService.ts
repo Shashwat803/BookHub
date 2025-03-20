@@ -38,7 +38,14 @@ export default {
         limit: limit,
         order: [["authorId", "DESC"]],
       });
-      return authors;
+    
+      const totalAuthors = await Author.count({ where: whereQuery })
+      return {
+        authors,
+        totalAuthors,
+        totalPages: Math.ceil(totalAuthors / limit),
+        currentPage: pageNumber,
+      };
     } catch (error) {
       throw new Error("Error while fetching author");
     }
