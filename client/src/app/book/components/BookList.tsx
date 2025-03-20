@@ -19,7 +19,7 @@ interface BookListProps {
 
 const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const booksPerPage = 10;
+  const booksPerPage = 3;
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedValue = useDebounce(searchTerm, 1000);
   const [editBook, setEditBook] = useState<Book | null>(null);

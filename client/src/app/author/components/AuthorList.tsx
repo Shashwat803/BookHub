@@ -24,7 +24,7 @@ interface AuthorListProps {
 
 const AuthorList: React.FC<AuthorListProps> = ({ setVisible, visible }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const authorsPerPage = 10;
+  const authorsPerPage = 3;
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedValue = useDebounce(searchTerm, 1000);
   const [editAuthor, setEditAuthor] = useState<Author | null>(null);
