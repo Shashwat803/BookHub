@@ -27,7 +27,7 @@ function BookForm({
   onClose: () => void;
   book?: Book;
 }) {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     bookId: book?.bookId || undefined,
     title: book?.title || "",
     description: book?.description || "",
@@ -36,8 +36,9 @@ function BookForm({
       : undefined,
     authorId: book?.Author?.authorId,
     coverImage: null as File | null,
-  });
+  };
 
+  const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({
     title: false,
     description: false,
@@ -91,6 +92,7 @@ function BookForm({
       });
 
       console.log("Book created successfully!", response);
+      setFormData(initialFormData); // Reset form data
       onClose();
     } catch (error) {
       console.error("Error creating book:", error);
@@ -106,6 +108,11 @@ function BookForm({
     const file = e.target.files?.[0] || null;
     setFormData({ ...formData, coverImage: file });
     setErrors({ ...errors });
+  };
+
+  const handleClose = () => {
+    setFormData(initialFormData); // Reset form data
+    onClose();
   };
 
   if (!visible) return null;
@@ -261,7 +268,7 @@ function BookForm({
           <Button
             variant="outline"
             className="bg-gray-800 text-white border-gray-700 hover:bg-gray-700 h-12 px-6"
-            onClick={onClose}
+            onClick={handleClose}
             disabled={loading}
           >
             Cancel

@@ -5,11 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import {
-  User,
-  FileText,
-  ImageIcon,
-} from "lucide-react";
+import { User, FileText, ImageIcon } from "lucide-react";
 import { useMutation } from "@apollo/client";
 import { CREATE_AUTHOR } from "@/graphql/mutation";
 import { Get_Authors } from "@/graphql/queries";
@@ -24,12 +20,19 @@ function AuthorForm({
   onClose: () => void;
   author?: Author;
 }) {
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     authorId: author?.authorId || undefined,
     name: author?.name || "",
     biography: author?.biography || "",
     born_date: author?.bornDate ? new Date(author.bornDate) : undefined,
     image: null as File | null,
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [errors, setErrors] = useState({
+    name: false,
+    biography: false,
+    born_date: false,
   });
 
   const [addAuthor, { loading }] = useMutation(CREATE_AUTHOR, {
@@ -40,12 +43,6 @@ function AuthorForm({
       },
     ],
     awaitRefetchQueries: true,
-  });
-
-  const [errors, setErrors] = useState({
-    name: false,
-    biography: false,
-    born_date: false,
   });
 
   const handleSubmit = async () => {
@@ -79,11 +76,13 @@ function AuthorForm({
       });
 
       console.log("Author created successfully!", response);
+      setFormData(initialFormData); // Reset form data
       onClose();
     } catch (error) {
       console.error("Error creating author:", error);
     }
   };
+
   const handleChange = (field: string, value: string | number | Date) => {
     setFormData({ ...formData, [field]: value });
     setErrors({ ...errors, [field]: false });
@@ -93,6 +92,11 @@ function AuthorForm({
     const file = e.target.files?.[0] || null;
     setFormData({ ...formData, image: file });
     setErrors({ ...errors });
+  };
+
+  const handleClose = () => {
+    setFormData(initialFormData); // Reset form data
+    onClose();
   };
 
   if (!visible) return null;
@@ -206,7 +210,7 @@ function AuthorForm({
           <Button
             variant="outline"
             className="bg-gray-800 text-white border-gray-700 hover:bg-gray-700 h-12 px-6"
-            onClick={onClose}
+            onClick={handleClose}
             disabled={loading}
           >
             Cancel

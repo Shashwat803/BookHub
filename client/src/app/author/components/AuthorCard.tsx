@@ -27,7 +27,7 @@ const AuthorCard = ({
           <div className="relative w-1/3 h-40 flex items-center justify-center bg-gray-700">
             {author.image ? (
               <Image
-                src={`${ImageBaseUrl}${author.image}`}
+                src={`${ImageBaseUrl}/${author.image}`}
                 alt={author.name}
                 fill
                 className="object-cover p-2 rounded-lg"
@@ -112,7 +112,7 @@ const AuthorCard = ({
                   {author.image ? (
                     <div className="relative w-full h-48 md:h-64">
                       <Image
-                        src={`${ImageBaseUrl}${author.image}`}
+                        src={`${ImageBaseUrl}/${author.image}`}
                         alt={author.name}
                         fill
                         className="object-cover rounded-lg"

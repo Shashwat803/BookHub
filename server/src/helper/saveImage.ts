@@ -22,5 +22,5 @@ export const saveImage = async (image: any): Promise<string | null> => {
       .on("error", reject)
   );
 
-  return `uploads\\${uniqueFilename}`;
+  return `uploads/${uniqueFilename}`;
 };

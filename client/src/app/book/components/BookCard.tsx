@@ -30,7 +30,7 @@ const BookCard = ({
             <div className="relative h-48 w-1/3 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60 z-10"></div>
               <Image
-                src={`${ImageBaseUrl}${book.coverImage}`}
+                src={`${ImageBaseUrl}/${book.coverImage}`}
                 alt={book.title}
                 fill
                 className="object-cover transition-transform duration-300"
@@ -47,7 +47,7 @@ const BookCard = ({
               <div className="mt-1 flex items-center gap-2">
                 {book.Author.image ? (
                   <Image
-                    src={`${ImageBaseUrl}${book.Author.image}`}
+                    src={`${ImageBaseUrl}/${book.Author.image}`}
                     alt={book.Author.name}
                     width={24}
                     height={24}
@@ -126,7 +126,7 @@ const BookCard = ({
                   <div className="w-full md:w-1/3">
                     <div className="relative overflow-hidden rounded-lg shadow-lg">
                       <Image
-                        src={`${ImageBaseUrl}${book.coverImage}`}
+                        src={`${ImageBaseUrl}/${book.coverImage}`}
                         alt={book.title}
                         width={200}
                         height={300}
@@ -139,7 +139,7 @@ const BookCard = ({
                       <div className="flex items-center gap-2">
                         {book.Author.image ? (
                           <Image
-                            src={`${ImageBaseUrl}${book.Author.image}`}
+                            src={`${ImageBaseUrl}/${book.Author.image}`}
                             alt={book.Author.name}
                             width={32}
                             height={32}
