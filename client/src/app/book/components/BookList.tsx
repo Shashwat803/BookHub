@@ -142,7 +142,6 @@ const BookList: React.FC<BookListProps> = ({ setVisible, visible }) => {
           </div>
         </div>
       )}
-
       {editBook && (
         <BookForm
           visible={visible}

@@ -39,7 +39,7 @@ function AuthorForm({
     refetchQueries: [
       {
         query: Get_Authors,
-        variables: { limit: 10, pageNumber: 1, searchQuery: "" },
+        variables: { limit: 3, pageNumber: 1, searchQuery: "" },
       },
       {
         query: Get_AuthorNameList,

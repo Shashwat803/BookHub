@@ -24,6 +24,7 @@ export default {
         where: whereQuery,
         offset,
         limit,
+        order: [["bookId", "DESC"]],
       });
       const totalBooks = await Book.count({ where: whereQuery });
 
